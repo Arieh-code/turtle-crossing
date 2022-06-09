@@ -22,5 +22,15 @@ while game_is_on:
     car_manager.move_cars()
 
     # detect collision with cars
+    for car in car_manager.all_cars:
+        if player.distance(car) < 25:
+            game_is_on = False
+            # print game over
+
+    # detect when reached the end
+    if player.ycor() == 290:
+        player.next_level()
+        car_manager.update_speed()
+        # print next level
 
 screen.exitonclick()
